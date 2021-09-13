@@ -1,0 +1,27 @@
+{
+  "name": "TeamProfileGenerator",
+  "version": "1.0.0",
+  "description": "Node Jest OOP",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteveHoltRules/TeamProfileGenerator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SteveHoltRules/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/SteveHoltRules/TeamProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.1.1"
+  }
+}
