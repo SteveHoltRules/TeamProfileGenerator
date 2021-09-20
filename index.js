@@ -1,6 +1,17 @@
 const inquirer = require('inquirer');
+const Employee = require('./lib/Employee.js');
+const Manager = require('./lib/Manager.js');
+const Intern = require('./lib/Intern.js');
+const Engineer = require('./lib/Engineer.js');
 
 var employeeData = {}
+
+function EmployeeData() {
+    this.name;
+    this.id;
+    this.email;
+    this.role;
+}
 
 const empName = () => {
   if(!employeeData) {
@@ -26,5 +37,9 @@ const empName = () => {
     console.log("this is the employee name");
     console.log(empName);
     return empName;
-  })
+  });
+};
+
+const role = (name) => {
+
 }
