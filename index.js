@@ -37,7 +37,7 @@ const empName = () => {
         type: "list",
         name: "role",
         message: "What position does this employee have?",
-        choices: ["Employee", "Engineer", "Manager", "Intern"]
+        choices: ["Engineer", "Manager", "Intern"]
       },
       {
         type: "number",
@@ -51,8 +51,6 @@ const empName = () => {
       }
   ])
   .then(({ name, role, id, email}) => {
-    this.employee = new Employee(name, id, email);
-
     if(role === "Manager") {
       inquirer
         .prompt({
@@ -61,8 +59,10 @@ const empName = () => {
           message: "What is the office number of this manager?",
         })
         .then(({ officeNumb }) => {
-          this.manager = new Manager(officeNumb);
-          employeeData.push(this.employee);
+          this.manager = new Manager(officeNumb, name, id, email);
+          employeeData.push(this.manager);
+          console.log("Employee Data:", employeeData);
+          restart();
         })
     } else if (role ==="Engineer") {
       inquirer
@@ -72,8 +72,10 @@ const empName = () => {
           message: "What is the github for this engineer?",
         })
         .then(({ github }) => {
-          this.engineer = new Engineer(github);
-          employeeData.push(this.employee);
+          this.engineer = new Engineer(github, name, id, email);
+          employeeData.push(this.engineer);
+          console.log("Employee Data:", employeeData);
+          restart();
         })
     } else if (role === "Intern") {
             inquirer
@@ -83,20 +85,36 @@ const empName = () => {
           message: "What is the school for this intern?",
         })
         .then(({ school }) => {
-          this.intern = new Intern(school);
-
-          employeeData.push(this.employee);
-
+          this.intern = new Intern(school, name, id, email);
+          employeeData.push(this.intern);
+          console.log("Employee Data:", employeeData);
+          restart();
         })
     } else {
+      this.employee = new Employee(name, id, email);
       employeeData.push(this.employee);
+      console.log("Employee Data:", employeeData);
+      restart();
     }
-
   })
 };
 
+function restart() {
+  inquirer
+        .prompt({
+          type: "confirm",
+          name: "restart",
+          message: "Would you like to add a new Employee?",
+          default: false
+        })
+        .then(newemployee => {
+          if(newemployee.restart) {
+            empName();
+          }
+        })
+}
 
 //To add a new employee prompt
- inquirer.prompt({});
+//  inquirer.prompt({});
 
 empName();
