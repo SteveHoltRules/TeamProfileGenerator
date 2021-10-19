@@ -1,39 +1,4 @@
-const fs = require("fs");
 
-const empRole = employeeData => {
-  console.log("Employee Data in EmpRole: ", employeeData);
-  var empDataRoles = Object.keys(employeeData);
-  console.log("empDataRoles: ", empDataRoles);
-  var roleInfo = [];
-  for (var i=0; i<empDataRoles.length; i++) {
-    if(Object.keys(employeeData[i]) === "Engineer") {
-      console.log("Employee Data Role Eng Loop: ", empDataRoles[i]);
-      roleInfo.push(employeeData[i])
-    }
-  }
-  console.log("RoleInfo: ", roleInfo);
-}
-
-  // employeeData.map((employeeData) => {
-
-  //         return `
-  //     <div class="col-md-6">
-  //       <div class="h-100 p-5 text-white bg-dark rounded-3">
-  //         <h2>${employeeData.name}</h2>
-  //         <p>${employeeData.id}<br>${employeeData.email}<br>${employeeData.school}</p>
-  //       </div>
-  //     </div> 
-  //     `;
-  //       })
-  //       .join("")}
-
-const generatePage = (employeeData) => {
-  if (!employeeData) {
-    return "";
-  }
-  fs.writeFile(
-    "index.html",
-    `
 <!doctype html>
 <html lang="en">
 
@@ -82,21 +47,14 @@ const generatePage = (employeeData) => {
     </header>
       <div class="row align-items-md-stretch">
       <!-- Loop starts here -->
-    //body split it out first and then map and then join
-    
-
-      ${employeeData
-        .map((employeeData) => {
-          return `
+      
       <div class="col-md-6">
         <div class="h-100 p-5 text-white bg-dark rounded-3">
-          <h2>${employeeData.name}</h2>
-          <p>${employeeData.id}<br>${employeeData.email}<br>${employeeData.school}</p>
+          <h2>Matt</h2>
+          <p>2<br>email@email.com<br>undefined</p>
         </div>
       </div> 
-      `;
-        })
-        .join("")}
+      
       </div>
 
     <footer class="pt-3 mt-4 text-muted border-top">
@@ -117,12 +75,4 @@ const generatePage = (employeeData) => {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-</body>`,
-    (err) => console.log("error")
-  );
-};
-
-module.exports = empRole;
-
-//Calls the function for the fs write file to place into the dist folder - should be called to generate
-//Note: fs.writeFile(find required arguments)
+</body>

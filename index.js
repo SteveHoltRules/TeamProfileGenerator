@@ -4,7 +4,7 @@ const Manager = require("./lib/Manager.js");
 const Intern = require("./lib/Intern.js");
 const Engineer = require("./lib/Engineer.js");
 
-const generatePage = require("./src/template.js");
+const empRole = require("./src/template.js");
 
 var employeeData = [];
 
@@ -114,7 +114,9 @@ function restart() {
       if (newemployee.restart) {
         empName();
       } else {
-        generatePage(employeeData);
+        // console.log(typeof generatePage());
+        // generatePage(employeeData);
+        console.log("Employee Data: ", empRole(employeeData));
       }
     });
 }
