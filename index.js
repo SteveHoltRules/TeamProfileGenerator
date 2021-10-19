@@ -17,7 +17,7 @@ function Profile() {
 
 const empName = () => {
   if (!employeeData) {
-    employeeData = {};
+    employeeData = [];
   }
   //Do I return inquirer, or do I omit the return? The jest-another-RPG omits the return
   inquirer

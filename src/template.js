@@ -1,18 +1,36 @@
 const fs = require("fs");
 
+function isEngineer(value) {
+  if(value === "Engineer") {
+    value;
+  }
+
+}
+
 const empRole = employeeData => {
   console.log("Employee Data in EmpRole: ", employeeData);
-  var empDataRoles = Object.keys(employeeData);
-  console.log("empDataRoles: ", empDataRoles);
+  console.log("Typeof: ", typeof employeeData);
   var roleInfo = [];
-  for (var i=0; i<empDataRoles.length; i++) {
-    if(Object.keys(employeeData[i]) === "Engineer") {
-      console.log("Employee Data Role Eng Loop: ", empDataRoles[i]);
-      roleInfo.push(employeeData[i])
-    }
-  }
+  // for(var i = 0; i<employeeData.length; i++) {
+  //   if(employeeData[i].includes("Engineer")){
+  //     roleInfo.push(employeeData[i])
+  //   }
+  // }
   console.log("RoleInfo: ", roleInfo);
-}
+  // if(employeeData[0])
+  // let empDataRoles = employeeData.filter((isEngineer)); 
+  // // var empDataRoles = (employeeData);
+  // console.log("empDataRoles: ", empDataRoles);
+};
+//   var roleInfo = [];
+//   for (var i=0; i<empDataRoles.length; i++) {
+//     if((employeeData[i]) === "Engineer") {
+//       console.log("Employee Data Role Eng Loop: ", empDataRoles[i]);
+//       roleInfo.push(employeeData[i])
+//     }
+//   }
+//   console.log("RoleInfo: ", roleInfo);
+// }
 
   // employeeData.map((employeeData) => {
 
