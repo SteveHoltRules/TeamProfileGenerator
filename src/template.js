@@ -1,27 +1,37 @@
 const fs = require("fs");
 
-function isEngineer(value) {
-  if(value === "Engineer") {
-    value;
-  }
-
-}
-
-const empRole = employeeData => {
+const empRole = (employeeData) => {
   console.log("Employee Data in EmpRole: ", employeeData);
   console.log("Typeof: ", typeof employeeData);
-  var roleInfo = [];
-  // for(var i = 0; i<employeeData.length; i++) {
-  //   if(employeeData[i].includes("Engineer")){
-  //     roleInfo.push(employeeData[i])
-  //   }
-  // }
-  console.log("RoleInfo: ", roleInfo);
-  // if(employeeData[0])
-  // let empDataRoles = employeeData.filter((isEngineer)); 
-  // // var empDataRoles = (employeeData);
-  // console.log("empDataRoles: ", empDataRoles);
+  // var container = document.querySelector(".c-aside__eventList");
+  var engineerInfo = [];
+  var managerInfo = [];
+  var internInfo = [];
+  for (var i = 0; i < employeeData.length; i++) {
+    if (employeeData[i].getRole() === "Engineer") {
+      // engineerInfo.push(employeeData[i]);
+      engineerInfo.push(`
+    <div class="col-md-6">
+      <div class="h-100 p-5 text-white bg-dark rounded-3">
+        <h2>${employeeData[i].getName()}</h2>
+        <p>${employeeData[i].getId()}<br>${employeeData[i].getEmail()}<br></p>
+      </div>
+    </div>
+    `);
+    } else if (employeeData[i].getRole() === "Manager") {
+      managerInfo.push(employeeData[i]);
+    } else if (employeeData[i].getRole() === "Intern") {
+      internInfo.push(employeeData[i]);
+    }
+
+    console.log("Engineer Info: ", engineerInfo);
+    console.log("Manager Info: ", managerInfo);
+    console.log("Intern Info: ", internInfo);
+
+    //I should combine all of the HTML pages to one map function
+  }
 };
+// ${employeeData[i].getGithub()}
 //   var roleInfo = [];
 //   for (var i=0; i<empDataRoles.length; i++) {
 //     if((employeeData[i]) === "Engineer") {
@@ -32,18 +42,18 @@ const empRole = employeeData => {
 //   console.log("RoleInfo: ", roleInfo);
 // }
 
-  // employeeData.map((employeeData) => {
+// employeeData.map((employeeData) => {
 
-  //         return `
-  //     <div class="col-md-6">
-  //       <div class="h-100 p-5 text-white bg-dark rounded-3">
-  //         <h2>${employeeData.name}</h2>
-  //         <p>${employeeData.id}<br>${employeeData.email}<br>${employeeData.school}</p>
-  //       </div>
-  //     </div> 
-  //     `;
-  //       })
-  //       .join("")}
+//         return `
+//     <div class="col-md-6">
+//       <div class="h-100 p-5 text-white bg-dark rounded-3">
+//         <h2>${employeeData.name}</h2>
+//         <p>${employeeData.id}<br>${employeeData.email}<br>${employeeData.school}</p>
+//       </div>
+//     </div>
+//     `;
+//       })
+//       .join("")}
 
 const generatePage = (employeeData) => {
   if (!employeeData) {
