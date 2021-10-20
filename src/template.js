@@ -7,60 +7,82 @@ const empRole = (employeeData) => {
   var engineerInfo = [];
   var managerInfo = [];
   var internInfo = [];
+  var combined = [];
   for (var i = 0; i < employeeData.length; i++) {
     if (employeeData[i].getRole() === "Engineer") {
       // engineerInfo.push(employeeData[i]);
       engineerInfo.push(`
-    <div class="col-md-6">
-      <div class="h-100 p-5 text-white bg-dark rounded-3">
-        <h2>${employeeData[i].getName()}</h2>
-        <p>${employeeData[i].getId()}<br>${employeeData[i].getEmail()}<br></p>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">${employeeData[i].getRole()}</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">${employeeData[i].getName()}</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Email: ${employeeData[i].getEmail()}</li>
+            <li>Employee #: ${employeeData[i].getId()}</li>
+            <li>GitHub: ${employeeData[i].github}</li>
+          </ul>
+        </div>
+      </div>
+    </div>    
+
+    `);
+    } else if (employeeData[i].getRole() === "Manager") {
+      managerInfo.push(`
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">${employeeData[i].getRole()}</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">${employeeData[
+            i
+          ].getName()}</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Email: ${employeeData[i].getEmail()}</li>
+            <li>Employee #: ${employeeData[i].getId()}</li>
+            <li>Office #: ${employeeData[i].officeNumber}</li>
+          </ul>
+        </div>
+      </div>
+    </div>  
+    `);
+    } else if (employeeData[i].getRole() === "Intern") {
+      internInfo.push(`    
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">${employeeData[i].getRole()}</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">${employeeData[i].getName()}</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>Email: ${employeeData[i].getEmail()}</li>
+            <li>Employee #: ${employeeData[i].getId()}</li>
+            <li>School: ${employeeData[i].school}</li>
+          </ul>
+        </div>
       </div>
     </div>
     `);
-    } else if (employeeData[i].getRole() === "Manager") {
-      managerInfo.push(employeeData[i]);
-    } else if (employeeData[i].getRole() === "Intern") {
-      internInfo.push(employeeData[i]);
     }
-
-    console.log("Engineer Info: ", engineerInfo);
-    console.log("Manager Info: ", managerInfo);
-    console.log("Intern Info: ", internInfo);
-
-    //I should combine all of the HTML pages to one map function
   }
+  console.log("Engineer Info: ", engineerInfo);
+  console.log("Manager Info: ", managerInfo);
+  console.log("Intern Info: ", internInfo);
+  combined = [engineerInfo, managerInfo, internInfo];
+  return combined.join("");
+  //I should combine all of the HTML pages to one map function
 };
-// ${employeeData[i].getGithub()}
-//   var roleInfo = [];
-//   for (var i=0; i<empDataRoles.length; i++) {
-//     if((employeeData[i]) === "Engineer") {
-//       console.log("Employee Data Role Eng Loop: ", empDataRoles[i]);
-//       roleInfo.push(employeeData[i])
-//     }
-//   }
-//   console.log("RoleInfo: ", roleInfo);
-// }
-
-// employeeData.map((employeeData) => {
-
-//         return `
-//     <div class="col-md-6">
-//       <div class="h-100 p-5 text-white bg-dark rounded-3">
-//         <h2>${employeeData.name}</h2>
-//         <p>${employeeData.id}<br>${employeeData.email}<br>${employeeData.school}</p>
-//       </div>
-//     </div>
-//     `;
-//       })
-//       .join("")}
 
 const generatePage = (employeeData) => {
   if (!employeeData) {
     return "";
   }
   fs.writeFile(
-    "index.html",
+    "./dist/index.html",
     `
 <!doctype html>
 <html lang="en">
@@ -95,36 +117,22 @@ const generatePage = (employeeData) => {
 
 <body>
 
-  <main>
-  <div class="container py-4">
-    <header class="pb-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img">
-          <title>Icon Example</title>
-          <path fill-rule="evenodd" clip-rule="evenodd"
-            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
-            fill="currentColor"></path>
-        </svg>
-        <span class="fs-4">Team Profile</span>
-      </a>
-    </header>
-      <div class="row align-items-md-stretch">
-      <!-- Loop starts here -->
-    //body split it out first and then map and then join
-    
+    <main>
+      <div class="container py-4">
+        <header class="pb-3 mb-4 border-bottom">
+          <div class="d-flex justify-content-center align-items-center text-dark text-decoration-none">
+            <img
+              src="../src/noun_Book_1771987.svg"
+              alt=""
+              style="height: 125px"
+            />
+            <h2>Team Profile Generator</h2>
+          </div>
+        </header>
 
-      ${employeeData
-        .map((employeeData) => {
-          return `
-      <div class="col-md-6">
-        <div class="h-100 p-5 text-white bg-dark rounded-3">
-          <h2>${employeeData.name}</h2>
-          <p>${employeeData.id}<br>${employeeData.email}<br>${employeeData.school}</p>
-        </div>
-      </div> 
-      `;
-        })
-        .join("")}
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <!-- Loop starts here -->    
+      ${empRole(employeeData)}
       </div>
 
     <footer class="pt-3 mt-4 text-muted border-top">
@@ -150,7 +158,7 @@ const generatePage = (employeeData) => {
   );
 };
 
-module.exports = empRole;
+module.exports = generatePage;
 
 //Calls the function for the fs write file to place into the dist folder - should be called to generate
 //Note: fs.writeFile(find required arguments)
