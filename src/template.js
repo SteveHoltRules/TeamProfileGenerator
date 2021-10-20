@@ -26,8 +26,7 @@ const empRole = (employeeData) => {
           </ul>
         </div>
       </div>
-    </div>    
-
+    </div>
     `);
     } else if (employeeData[i].getRole() === "Manager") {
       managerInfo.push(`
@@ -37,9 +36,7 @@ const empRole = (employeeData) => {
           <h4 class="my-0 fw-normal">${employeeData[i].getRole()}</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">${employeeData[
-            i
-          ].getName()}</h1>
+          <h1 class="card-title pricing-card-title">${employeeData[i].getName()}</h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li>Email: ${employeeData[i].getEmail()}</li>
             <li>Employee #: ${employeeData[i].getId()}</li>
@@ -69,20 +66,18 @@ const empRole = (employeeData) => {
     `);
     }
   }
-  console.log("Engineer Info: ", engineerInfo);
-  console.log("Manager Info: ", managerInfo);
-  console.log("Intern Info: ", internInfo);
+  // console.log("Engineer Info: ", engineerInfo);
+  // console.log("Manager Info: ", managerInfo);
+  // console.log("Intern Info: ", internInfo);
   combined = [engineerInfo, managerInfo, internInfo];
   return combined.join("");
-  //I should combine all of the HTML pages to one map function
 };
 
 const generatePage = (employeeData) => {
   if (!employeeData) {
     return "";
   }
-  fs.writeFile(
-    "./dist/index.html",
+  fs.writeFile("./dist/index.html",
     `
 <!doctype html>
 <html lang="en">
@@ -159,6 +154,3 @@ const generatePage = (employeeData) => {
 };
 
 module.exports = generatePage;
-
-//Calls the function for the fs write file to place into the dist folder - should be called to generate
-//Note: fs.writeFile(find required arguments)

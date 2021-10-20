@@ -8,13 +8,6 @@ const empRole = require("./src/template.js");
 
 var employeeData = [];
 
-function Profile() {
-  this.name;
-  this.id;
-  this.email;
-  this.role;
-}
-
 const empName = () => {
   if (!employeeData) {
     employeeData = [];
@@ -61,7 +54,7 @@ const empName = () => {
             message: "What is the office number of this manager?",
           })
           .then(({ officeNumb }) => {
-            this.manager = new Manager(officeNumb, name, id, email);
+            this.manager = new Manager(name, id, email, officeNumb);
             employeeData.push(this.manager);
             console.log("Employee Data:", employeeData);
             restart();
@@ -74,7 +67,7 @@ const empName = () => {
             message: "What is the github for this engineer?",
           })
           .then(({ github }) => {
-            this.engineer = new Engineer(github, name, id, email);
+            this.engineer = new Engineer(name, id, email, github);
             employeeData.push(this.engineer);
             console.log("Employee Data:", employeeData);
             restart();
@@ -87,7 +80,7 @@ const empName = () => {
             message: "What is the school for this intern?",
           })
           .then(({ school }) => {
-            this.intern = new Intern(school, name, id, email);
+            this.intern = new Intern(name, id, email, school);
             employeeData.push(this.intern);
             console.log("Employee Data:", employeeData);
             restart();
@@ -114,9 +107,8 @@ function restart() {
       if (newemployee.restart) {
         empName();
       } else {
-        // console.log(typeof generatePage());
-        // generatePage(employeeData);
-        console.log("Employee Data: ", empRole(employeeData));
+        // console.log("Employee Data: ", empRole(employeeData));
+        empRole(employeeData);
       }
     });
 }
