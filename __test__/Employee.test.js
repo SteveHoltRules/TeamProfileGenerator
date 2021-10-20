@@ -1,4 +1,3 @@
-const { TestWatcher } = require('@jest/core');
 const Employee = require('../lib/Employee.js');
 
 test('create an employee',() => {
