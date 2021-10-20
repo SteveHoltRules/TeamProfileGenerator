@@ -6,5 +6,5 @@ test("create an employee", () => {
   expect(engineer.name).toBe("Tim");
   expect(engineer.id).toEqual(expect.any(Number));
   expect(engineer.email).toEqual(expect.stringMatching(/[@]+/));
-  expect(engineer.github).toEqual(expect.any);
+  expect(engineer.github).toEqual(expect.any(String));
 });
