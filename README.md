@@ -1,7 +1,7 @@
 ## Team Profile Generator
  
 1. [Installation](#installation)
-2. [Video Walkthrough](#videowalkthrough)
+2. [Video Walkthrough](#video walkthrough)
 3. [Usage](#usage)
 4. [Technologies Used](#technologies)
 5. [License](#license)
