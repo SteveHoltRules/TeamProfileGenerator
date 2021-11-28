@@ -1,14 +1,24 @@
 ## Team Profile Generator
  
 1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Technologies Used](#technologies)
-4. [License](#license)
-5. [Tests](#tests)
-6. [Future Development](#future)
+2. [Video Walkthrough](#videowalkthrough)
+3. [Usage](#usage)
+4. [Technologies Used](#technologies)
+5. [License](#license)
+6. [Tests](#tests)
+7. [Future Development](#future)
+
+##Screenshot
+
+![image](https://user-images.githubusercontent.com/78341753/143780378-065feafd-6f98-4259-8dbf-0528da11c292.png)
+
 
 ## Installation
 Installation can be achieved through cloning the github repository. 
+
+## Video Walkthrough
+
+https://youtu.be/YePo-ICKBtM
 
 ## Usage
 This team profile generator can be used to create employee profiles that can be generated to place on a website. The program takes in information about different employee classes and generates a formatted website in response. 
